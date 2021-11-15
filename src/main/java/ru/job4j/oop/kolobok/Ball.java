@@ -6,7 +6,7 @@ public class Ball {
         if (condition) {
             System.out.println("Kolobok is dead, baby. Kolobok is dead.");
         } else {
-            System.out.println("Kolobok escapes his destiny.");
+            System.out.println("Kolobok escapes his destiny. ");
         }
     }
 
