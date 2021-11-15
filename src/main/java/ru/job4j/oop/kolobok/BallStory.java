@@ -1,4 +1,4 @@
-package ru.job4j.oop.Kolobok;
+package ru.job4j.oop.kolobok;
 
 public class BallStory {
 

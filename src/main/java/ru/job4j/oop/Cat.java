@@ -23,13 +23,10 @@ public class Cat {
     }
 
     public static void main(String[] args) {
-        {
             Cat peppy = new Cat();
             Cat sparky = new Cat();
             String say = peppy.sound();
             System.out.println("Peppy says " + say);
-        }
-        {
             System.out.println("There are gav's food.");
             Cat gav = new Cat();
             gav.giveNick("Gav");
@@ -40,6 +37,5 @@ public class Cat {
             black.giveNick("Black");
             black.eat("fish");
             black.show();
-        }
     }
 }
