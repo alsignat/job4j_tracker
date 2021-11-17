@@ -1,15 +1,13 @@
 package ru.job4j.inheritance.professions;
 
+import java.util.Date;
+
 public class Dentist extends Doctor {
 
     private boolean isOrthodont;
 
-    public Dentist() {
-        super();
-    }
-
-    public Dentist(boolean isOrthodont) {
-        super();
+    public Dentist(String name, String surname, Date birthday, String education, boolean licensed, boolean isOrthodont) {
+        super(name, surname, birthday, education, licensed);
         this.isOrthodont = isOrthodont;
     }
 

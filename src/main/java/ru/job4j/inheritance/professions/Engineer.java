@@ -1,15 +1,13 @@
 package ru.job4j.inheritance.professions;
 
+import java.util.Date;
+
 public class Engineer extends Profession {
 
     private boolean knowsMath;
 
-    public Engineer() {
-        super();
-    }
-
-    public Engineer(boolean knowsMath) {
-        super();
+    public Engineer(String name, String surname, Date birthday, String education, boolean knowsMath) {
+        super(name, surname, birthday, education);
         this.knowsMath = knowsMath;
     }
 

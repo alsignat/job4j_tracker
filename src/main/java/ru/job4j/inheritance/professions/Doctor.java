@@ -1,15 +1,13 @@
 package ru.job4j.inheritance.professions;
 
+import java.util.Date;
+
 public class Doctor extends Profession {
 
     private boolean licensed;
 
-    public Doctor() {
-        super();
-    }
-
-    public Doctor(boolean licensed) {
-        super();
+    public Doctor(String name, String surname, Date birthday, String education, boolean licensed) {
+        super(name, surname, birthday, education);
         this.licensed = licensed;
     }
 

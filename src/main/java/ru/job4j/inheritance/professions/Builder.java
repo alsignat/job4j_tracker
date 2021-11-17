@@ -1,15 +1,13 @@
 package ru.job4j.inheritance.professions;
 
+import java.util.Date;
+
 public class Builder extends Engineer {
 
     private int electricityAccess;
 
-    public Builder() {
-        super();
-    }
-
-    public Builder(int electricity) {
-        super();
+    public Builder(String name, String surname, Date birthday, String education, boolean knowsMath, int electricity) {
+        super(name, surname, birthday, education, knowsMath);
         this.electricityAccess = electricity;
     }
 
