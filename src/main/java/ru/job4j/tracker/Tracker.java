@@ -37,12 +37,11 @@ public class Tracker {
         int index = indexOf(id);
         if (index == -1) {
             return false;
-        } else {
-            System.arraycopy(items, index + 1, items, index, size - index - 1);
-            items[items.length - 1] = null;
-            size--;
-            return true;
         }
+        System.arraycopy(items, index + 1, items, index, size - index - 1);
+        items[items.length - 1] = null;
+        size--;
+        return true;
     }
 
     public boolean replace(int id, Item item) {
