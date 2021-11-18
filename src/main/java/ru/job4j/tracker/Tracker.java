@@ -49,12 +49,10 @@ public class Tracker {
         int index = indexOf(id);
         if (index == -1) {
             return false;
-        } else {
-            int oldId = items[index].getId();
-            items[index] = item;
-            items[index].setId(oldId);
-            return true;
         }
+        item.setId(id);
+        items[index] = item;
+        return true;
     }
 
     public Item[] findByName(String name) {
