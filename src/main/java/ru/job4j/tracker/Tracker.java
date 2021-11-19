@@ -39,7 +39,7 @@ public class Tracker {
             return false;
         }
         System.arraycopy(items, index + 1, items, index, size - index - 1);
-        items[items.length - 1] = null;
+        items[size - 1] = null;
         size--;
         return true;
     }
