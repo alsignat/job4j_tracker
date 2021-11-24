@@ -7,13 +7,13 @@ import javax.xml.stream.events.StartElement;
 import static org.junit.Assert.*;
 
 public class StartUITest {
-
     @Test
     public void whenAddItem() {
         String[] answers = {"Fix PC"};
         Input input = new StubInput(answers);
         Tracker tracker = new Tracker();
-        StartUI.createItem(input, tracker);
+        UserAction[] actions = {new CreateAction()};
+        actions[0].execute(input, tracker);
         Item created = tracker.findAll()[0];
         Item expected = new Item("Fix PC");
         assertEquals(expected.getName(), created.getName());
@@ -25,10 +25,11 @@ public class StartUITest {
         Item item = new Item("new item");
         tracker.add(item);
         String[] answers = {
-                String.valueOf(item.getId()), /* id сохраненной заявки в объект tracker. */
+                String.valueOf(item.getId()),
                 "edited item"
         };
-        StartUI.editItem(new StubInput(answers), tracker);
+        UserAction[] actions = {new EditAction()};
+        actions[0].execute(new StubInput(answers), tracker);
         Item edited = tracker.findById(item.getId());
         assertEquals(edited.getName(), "edited item");
     }
@@ -43,4 +44,5 @@ public class StartUITest {
         boolean testTrackerUpdated = tracker.findById(deletedItemId) == null;
         assertTrue(testBooleanReturn && testTrackerUpdated);
     }
+
 }
