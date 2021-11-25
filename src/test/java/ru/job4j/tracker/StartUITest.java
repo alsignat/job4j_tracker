@@ -9,14 +9,12 @@ import static org.junit.Assert.*;
 public class StartUITest {
     @Test
     public void whenAddItem() {
-        String[] answers = {"Fix PC"};
+        String[] answers = {"0", "Fix PC", "1"};
         Input input = new StubInput(answers);
         Tracker tracker = new Tracker();
-        UserAction[] actions = {new CreateAction()};
-        actions[0].execute(input, tracker);
-        Item created = tracker.findAll()[0];
-        Item expected = new Item("Fix PC");
-        assertEquals(expected.getName(), created.getName());
+        UserAction[] actions = {new CreateAction(), new EndProgramAction()};
+        new StartUI().init(input, tracker, actions);
+        assertEquals(tracker.findAll()[0].getName(), "Fix PC");
     }
 
     @Test
@@ -24,14 +22,11 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = new Item("new item");
         tracker.add(item);
-        String[] answers = {
-                String.valueOf(item.getId()),
-                "edited item"
-        };
-        UserAction[] actions = {new EditAction()};
-        actions[0].execute(new StubInput(answers), tracker);
-        Item edited = tracker.findById(item.getId());
-        assertEquals(edited.getName(), "edited item");
+        UserAction[] actions = {new EditAction(), new EndProgramAction()};
+        String[] answers = {"0", String.valueOf(item.getId()), "edited item", "1"};
+        Input input = new StubInput(answers);
+        new StartUI().init(input, tracker, actions);
+        assertEquals(tracker.findById(item.getId()).getName(), "edited item");
     }
 
     @Test
@@ -39,10 +34,11 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = new Item("new item");
         tracker.add(item);
-        int deletedItemId = tracker.findAll()[0].getId();
-        boolean testBooleanReturn = tracker.delete(deletedItemId);
-        boolean testTrackerUpdated = tracker.findById(deletedItemId) == null;
-        assertTrue(testBooleanReturn && testTrackerUpdated);
+        String[] answers = {"0", "1", "1"};
+        Input input = new StubInput(answers);
+        UserAction[] actions = {new DeleteAction(), new EndProgramAction()};
+        new StartUI().init(input, tracker, actions);
+        assertNull(tracker.findById(item.getId()));
     }
 
 }
