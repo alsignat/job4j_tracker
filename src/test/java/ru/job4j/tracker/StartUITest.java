@@ -44,4 +44,109 @@ public class StartUITest {
         assertNull(tracker.findById(item.getId()));
     }
 
+    @Test
+    public void whenReplaceItemTestOutputIsSuccessfully() {
+        Output out = new StubOutput();
+        Tracker tracker = new Tracker();
+        Item one = tracker.add(new Item("test1"));
+        String replaceName = "New Test Name";
+        Input in = new StubInput(
+                new String[] {"0", String.valueOf(one.getId()), replaceName, "1"}
+        );
+        UserAction[] actions = new UserAction[]{
+                new EditAction(out),
+                new EndProgramAction(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        String ln = System.lineSeparator();
+        assertEquals("\nMenu:" + ln
+                        + "0. Edit item" + ln
+                        + "1. End program" + ln
+                        + "=== Edit item ===" + ln
+                        + "Заявка изменена успешно." + ln
+                        + "\nMenu:" + ln
+                        + "0. Edit item" + ln
+                        + "1. End program" + ln
+                        + "Goodbye!" + ln,
+                out.toString());
+    }
+
+    @Test
+    public void whenFindByIdTestOutputIsSuccessfully() {
+        Output out = new StubOutput();
+        Tracker tracker = new Tracker();
+        Item one = tracker.add(new Item("test1"));
+        Input in = new StubInput(
+                new String[] {"0", String.valueOf(one.getId()), "1"}
+        );
+        UserAction[] actions = new UserAction[]{
+                new FindByIdAction(out),
+                new EndProgramAction(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        String ln = System.lineSeparator();
+        assertEquals("\nMenu:" + ln
+                        + "0. Find item by id" + ln
+                        + "1. End program" + ln
+                        + "=== Find item by id ===" + ln
+                        + one.toString() + ln
+                        + "\nMenu:" + ln
+                        + "0. Find item by id" + ln
+                        + "1. End program" + ln
+                        + "Goodbye!" + ln,
+                out.toString());
+    }
+
+    @Test
+    public void whenFindByNameTestOutputIsSuccessfully() {
+        Output out = new StubOutput();
+        Tracker tracker = new Tracker();
+        Item one = tracker.add(new Item("test1"));
+        Input in = new StubInput(
+                new String[] {"0", one.getName(), "1"}
+        );
+        UserAction[] actions = new UserAction[]{
+                new FindByNameAction(out),
+                new EndProgramAction(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        String ln = System.lineSeparator();
+        assertEquals("\nMenu:" + ln
+                        + "0. Find items by name" + ln
+                        + "1. End program" + ln
+                        + "=== Find items by name ===" + ln
+                        + tracker.findByName(one.getName())[0].toString() + ln
+                        + "\nMenu:" + ln
+                        + "0. Find items by name" + ln
+                        + "1. End program" + ln
+                        + "Goodbye!" + ln,
+                out.toString());
+    }
+
+    @Test
+    public void whenFindAllTestOutputIsSuccessfully() {
+        Output out = new StubOutput();
+        Tracker tracker = new Tracker();
+        Item one = tracker.add(new Item("test1"));
+        Input in = new StubInput(
+                new String[] {"0", String.valueOf(one.getId()), "1"}
+        );
+        UserAction[] actions = new UserAction[]{
+                new ShowItemsAction(out),
+                new EndProgramAction(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        String ln = System.lineSeparator();
+        assertEquals(out.toString(),
+                "\nMenu:" + ln
+                        + "0. Show all items" + ln
+                        + "1. End program" + ln
+                        + "=== Show all items ===" + ln
+                        + one.toString() + ln
+                        + "\nMenu:" + ln
+                        + "0. Show all items" + ln
+                        + "1. End program" + ln
+                        + "Goodbye!" + ln
+        );
+    }
 }
