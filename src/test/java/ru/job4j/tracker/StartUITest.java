@@ -144,7 +144,7 @@ public class StartUITest {
                         + "0. Show all items" + ln
                         + "1. End program" + ln
                         + "=== Show all items ===" + ln
-                        + one.toString() + ln
+                        + one + ln
                         + ln + "Menu:" + ln
                         + "0. Show all items" + ln
                         + "1. End program" + ln
