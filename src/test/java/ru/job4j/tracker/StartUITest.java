@@ -9,13 +9,14 @@ import static org.junit.Assert.*;
 public class StartUITest {
     @Test
     public void whenAddItem() {
-        String[] answers = {"0", "Fix PC", "1"};
+        Item item = new Item("new item");
+        String[] answers = {"0", String.valueOf(item.getName()), "1"};
         Input input = new StubInput(answers);
         Output out = new StubOutput();
         Tracker tracker = new Tracker();
         UserAction[] actions = {new CreateAction(out), new EndProgramAction(out)};
         new StartUI(out).init(input, tracker, actions);
-        assertEquals(tracker.findAll()[0].getName(), "Fix PC");
+        assertEquals(tracker.findAll()[0].getName(), "new item");
     }
 
     @Test
