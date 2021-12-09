@@ -15,6 +15,25 @@ public class FindEl {
         return rsl;
     }
 
+    public static boolean sent(String value, String[] abuses) throws ElementAbuseException {
+        for (String key : abuses) {
+            if (value.equals(key)) {
+                throw new ElementAbuseException("Данный ключ запрещен");
+            }
+        }
+        return true;
+    }
+
+    public static void process(String[] values, String key, String[] abuses) {
+        try {
+            if (indexOf(values, key) != -1) {
+                sent(key, abuses);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         String[] array = {"aa", "bb", "cc"};
         String el = "dd";
