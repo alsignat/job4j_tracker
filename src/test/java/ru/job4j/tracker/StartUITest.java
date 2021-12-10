@@ -2,8 +2,6 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 
-import javax.xml.stream.events.StartElement;
-
 import static org.junit.Assert.*;
 
 public class StartUITest {
@@ -150,4 +148,27 @@ public class StartUITest {
                         + "Goodbye!" + ln
         );
     }
+
+    @Test
+    public void whenInvalidExit() {
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[] {"10", "0"}
+        );
+        Tracker tracker = new Tracker();
+        UserAction[] actions = new UserAction[]{
+                new EndProgramAction(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        String ln = System.lineSeparator();
+        assertEquals(out.toString(),
+                "Menu:" + ln
+                    + "0. End program" + ln
+                    + "Wrong input, you can select: 0 .. 0" + ln
+                    + "Menu:" + ln
+                    + "0. End program" + ln
+                    + "Goodbye!" + ln
+        );
+    }
+
 }
