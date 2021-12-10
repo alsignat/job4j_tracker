@@ -10,7 +10,7 @@ public class StartUITest {
     @Test
     public void whenAddItem() {
         Item item = new Item("new item");
-        String[] answers = {"0", String.valueOf(item.getName()), "1"};
+        String[] answers = {"0", item.getName(), "1"};
         Input input = new StubInput(answers);
         Output out = new StubOutput();
         Tracker tracker = new Tracker();
@@ -37,7 +37,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = new Item("new item");
         tracker.add(item);
-        String[] answers = {"0", "1", "1"};
+        String[] answers = {"0", String.valueOf(item.getId()), "1"};
         Input input = new StubInput(answers);
         Output out = new StubOutput();
         UserAction[] actions = {new DeleteAction(out), new EndProgramAction(out)};
