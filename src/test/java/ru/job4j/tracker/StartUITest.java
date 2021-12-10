@@ -60,12 +60,11 @@ public class StartUITest {
         };
         new StartUI(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
-        assertEquals(ln
-                        + "Menu:" + ln
+        assertEquals("Menu:" + ln
                         + "0. Edit item" + ln
                         + "1. End program" + ln
                         + "=== Edit item ===" + ln
-                        + "Заявка изменена успешно." + ln + ln
+                        + "Заявка изменена успешно." + ln
                         + "Menu:" + ln
                         + "0. Edit item" + ln
                         + "1. End program" + ln
@@ -87,12 +86,12 @@ public class StartUITest {
         };
         new StartUI(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
-        assertEquals(ln + "Menu:" + ln
+        assertEquals("Menu:" + ln
                         + "0. Find item by id" + ln
                         + "1. End program" + ln
                         + "=== Find item by id ===" + ln
                         + one.toString() + ln
-                        + ln + "Menu:" + ln
+                        + "Menu:" + ln
                         + "0. Find item by id" + ln
                         + "1. End program" + ln
                         + "Goodbye!" + ln,
@@ -113,12 +112,12 @@ public class StartUITest {
         };
         new StartUI(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
-        assertEquals(ln + "Menu:" + ln
+        assertEquals("Menu:" + ln
                         + "0. Find items by name" + ln
                         + "1. End program" + ln
                         + "=== Find items by name ===" + ln
                         + tracker.findByName(one.getName())[0].toString() + ln
-                        + ln + "Menu:" + ln
+                        + "Menu:" + ln
                         + "0. Find items by name" + ln
                         + "1. End program" + ln
                         + "Goodbye!" + ln,
@@ -140,12 +139,12 @@ public class StartUITest {
         new StartUI(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
         assertEquals(out.toString(),
-                ln + "Menu:" + ln
+                "Menu:" + ln
                         + "0. Show all items" + ln
                         + "1. End program" + ln
                         + "=== Show all items ===" + ln
                         + one + ln
-                        + ln + "Menu:" + ln
+                        + "Menu:" + ln
                         + "0. Show all items" + ln
                         + "1. End program" + ln
                         + "Goodbye!" + ln
