@@ -10,6 +10,9 @@ public final class SingleTracker {
     }
 
     public Tracker getInstance() {
+        if (tracker == null) {
+            tracker = new Tracker();
+        }
         return tracker;
     }
 
