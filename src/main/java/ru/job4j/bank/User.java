@@ -2,7 +2,14 @@ package ru.job4j.bank;
 
 import java.util.Objects;
 
+/**
+ * Класс предназначен для описания клиента Банка
+ */
 public class User {
+
+    /**
+     * Для идентификации клиента испозуются поля паспорт {@code passport} и имя {@code username}
+     */
     private String passport;
     private String username;
 
@@ -27,6 +34,9 @@ public class User {
         this.username = username;
     }
 
+    /**
+     * Проверка клиентов на идентичность осуществляется по полю {@code passport}
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) {

@@ -2,7 +2,14 @@ package ru.job4j.bank;
 
 import java.util.Objects;
 
+/**
+ * Класс описывает клиентский счет
+ */
 public class Account {
+
+    /**
+     * Для описания счета используются поля реквизиты счета,{@code requisite} и баланс счета, {@code balance}
+     */
     private String requisite;
     private double balance;
 
@@ -27,6 +34,9 @@ public class Account {
         this.balance = balance;
     }
 
+    /**
+     * Проверка счетов осуществляется по полю {@code requisite}
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) {
