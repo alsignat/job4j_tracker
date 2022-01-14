@@ -43,15 +43,15 @@ public class JobTest {
     public void sortedByNameAscAndByPriorityDesc() {
         Comparator<Job> comp = new JobAscByName().thenComparing(new JobDescByPriority());
         int rsl = comp.compare(new Job("Foo", 10),
-                new Job("Bar", 5));
+                new Job("Foo", 15));
         assertTrue(rsl > 0);
     }
 
     @Test
     public void sortedByPriorityAscAndByNameDesc() {
         Comparator<Job> comp = new JobDescByName().thenComparing(new JobAscByPriority());
-        int rsl = comp.compare(new Job("Boo", 10),
-                new Job("Far", 50));
+        int rsl = comp.compare(new Job("Foo", 10),
+                new Job("Foo", 5));
         assertTrue(rsl > 0);
     }
 }
