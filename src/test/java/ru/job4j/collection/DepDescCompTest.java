@@ -39,6 +39,6 @@ public class DepDescCompTest {
                 "K1/SK1/SSK1",
                 "K2/SK1"
         );
-        assertTrue(rsl < 0);
+        assertTrue(rsl > 0);
     }
 }
