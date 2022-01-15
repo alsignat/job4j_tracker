@@ -25,10 +25,10 @@ public class DepDescCompTest {
     }
 
     @Test
-    public void whenFirstDepartmentIsDifferentThenAsc() {
+    public void whenFirstDepartmentIsEqualThenAsc() {
         int rsl = new DepDescComp().compare(
                 "K2/SK1/SSK1",
-                "K1/SK1/SSK2"
+                "K2/SK1/SSK2"
         );
         assertTrue(rsl < 0);
     }
@@ -39,6 +39,6 @@ public class DepDescCompTest {
                 "K1/SK1/SSK1",
                 "K2/SK1"
         );
-        assertTrue(rsl > 0);
+        assertTrue(rsl < 0);
     }
 }
