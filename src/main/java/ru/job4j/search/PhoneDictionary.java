@@ -17,8 +17,8 @@ public class PhoneDictionary {
      */
 
     public ArrayList<Person> findOld(String key) {
-        ArrayList<Person> result = new ArrayList<>();
-        for (Person person : persons) {
+        var result = new ArrayList<Person>();
+        for (var person : persons) {
             if (person.getName() != null && person.getName().contains(key)
                     || person.getSurname() != null && person.getSurname().contains(key)
                     || person.getPhone() != null && person.getPhone().contains(key)
@@ -35,8 +35,8 @@ public class PhoneDictionary {
         Predicate<Person> phone = person -> person.getPhone().contains(key);
         Predicate<Person> address = person -> person.getAddress().contains(key);
         Predicate<Person> combine = name.or(surname).or(phone).or(address);
-        ArrayList<Person> result = new ArrayList<>();
-        for (Person person : persons) {
+        var result = new ArrayList<Person>();
+        for (var person : persons) {
             if (combine.test(person)) {
                 result.add(person);
             }
