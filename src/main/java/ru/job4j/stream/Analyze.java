@@ -55,7 +55,7 @@ public class Analyze {
                 .entrySet()
                 .stream()
                 .map(kv -> new Tuple(kv.getKey(), kv.getValue()))
-                .max((o1, o2) -> Double.compare(o1.getScore(), o2.getScore()))
+                .max(Comparator.comparingDouble(Tuple::getScore))
                 .orElse(null);
     }
 }
